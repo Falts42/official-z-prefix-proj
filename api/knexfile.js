@@ -8,7 +8,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection:
-    'postgresql://postgres:docker@db:5432/postgres'
+    'postgresql://postgres:docker@db:5432/db1'
 
     // process.env.DB_CONNECTION_STRING || {
     //   host: 'localhost',
