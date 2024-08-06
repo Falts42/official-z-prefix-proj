@@ -52,13 +52,13 @@ app.get("/inventory/:item_name", async (req, res) => {
 
 //=======================POST NEW Item=============================================
 app.post("/inventory", async (req, res) => {
-  const { itemData } = req.body;
+  const { user_id, item_name, description, quantity } = req.body;
 
-  if (!itemData) {
-    return res.status(400).json({ error: "empty item field" });
+  if (!item_name || !description || !quantity) {
+    return res.status(400).json({ error: "empty item field. Please ensure you have your user ID, item name, description, and quantity listed" });
   }
   try {
-    const user = await knex("items").insert({ item_name: itemData }); //.returning("id");
+    const user = await knex("items").insert({ user_id: user_id, item_name: item_name, description: description, quantity: quantity });
     return res.status(202).json({ message: "item successfully added" });
   } catch (error) {
     console.error("error adding item", error);
