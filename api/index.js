@@ -87,5 +87,48 @@ app.patch("/inventory/:item_name", async (req, res) => {
   }
 });
 
+//=======================GET USER=============================================
+app.get("/userData/:username", async (req, res) => {
+  const { username } = req.params;
+  if (!username) {
+    return res
+      .status(400)
+      .json({ error: "empty username field, also a change reflects" });
+  }
+
+  try {
+    const user = await knex("users")
+      .select("id", "username")
+      .where({ username: username })
+      .first();
+
+    if (!user) return res.status(404).json({ error: "Username not found" });
+
+    return res.json(user);
+  } catch (error) {
+    console.error("error fetching userData", error);
+    return res.status(500).json({ error: "failed to fetch userData" + error });
+  }
+});
+
+//==================get Manager Inventory==================================
+app.get("/inventory/:userId", async (req, res) => {
+  const { userId } = req.params;
+  console.log("userId: ", userId);
+
+  try {
+    const inventoryRes = await knex("items")
+      .join("users", "users.id", "=", "items.user_id")
+      .select(
+        "items.item_name As item"
+      )
+      .where("items.user_id", userId);
+
+    res.json(inventoryRes);
+  } catch (error) {
+    console.error("error fetching inventory data: ", error);
+    return res.status(500).json({ error: "failed to fetch user data" });
+  }
+});
 
 app.listen(port, () => console.log('server is up and running'));

@@ -26,16 +26,16 @@ services:
      DB_CONNECTION_STRING: postgres://postgres:docker@db:5432/db1
     depends_on:
      - db
-    # entrypoint: ["./wait-for-it.sh", "db:5432", "--", "npm", "start"]
 
   app:
-    build: ./inventory-app
+    build: ./client
     ports:
       - "3000:3000"
     networks:
       - my_network
     volumes:
-      - ./inventory-app:/src/app
+     - ./client:/src/app
+
     depends_on:
       - server
 
