@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, Container } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateAccount() {
@@ -91,10 +91,10 @@ export default function CreateAccount() {
           required
         />
       </div>
+      <Container>
       <Button type="submit">Submit</Button>
-      <div>
       <Button  onClick={() => navigate('/')} type="submit">Go Home</Button>
-      </div>
+      </Container>
     </form>
   );
 }

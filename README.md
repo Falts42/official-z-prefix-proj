@@ -1,5 +1,7 @@
 # official-z-prefix-proj
 
+Preface: You may notice that my front-end files are not organized. There was an issue with the docker compose not being able to initially recognize the file paths outside of src, so I threw all of them into src as that was the easiest solution to continue making progress. Had I had more time, I would've tried to fix this. Sorry for the inconvenience.
+
 Hello there! Welcome to Zach Falter's Z-Prefix Project!
 
 If you are using this app for the first time, I have included steps on how to get you up and running in no time.
@@ -9,7 +11,7 @@ GETTING SET UP:
 
 2. Since I used Docker to create this project, make sure you have Docker desktop running in the background. It may not be the case for all users, but some users may not be able build/run the app without the desktop app open.
 
-3. Use the command "docker compose build --no-cache". This way it doesn't store the image data to prevent conflicts when composing up or down.
+3. 'cd' into the parent folder above 'api' and 'client' and use the command "docker compose build --no-cache". This way it doesn't store the image data to prevent conflicts when composing up or down.
 
 4. Now use the command "docker compose up" and you should see the app, server, and database spin up in the terminal.
 
@@ -29,7 +31,7 @@ USING THE API:
 
 2. Using Postman or another application to send JSON requests to the api, you can GET, POST, PATCH, and DELETE data from the api. However, make sure that you are using the correct routes listed in the index.js file in the api folder. For instance, using the previsouly provided link with a GET request will retrieve all of the inventory items, whereas using http://localhost:8080/inventory/(insert_Item_Name) will retrieve an item only by name and if the item exists in the database.
 
-DONE USING THE APPLICATION
+DONE USING THE APPLICATION:
 1. When you are done using the application, click on the terminal you are running docker compose and hit 'ctrl + C' to stop the application running.
 
 2. Then, run the command 'docker compose down' and it will unmount the containers.
