@@ -3,7 +3,7 @@ import { Button, Input, Container } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateAccount() {
-  // Define state for form fields
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -12,7 +12,7 @@ export default function CreateAccount() {
   });
 
   let navigate =useNavigate();
-  // Handle changes in input fields
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -21,7 +21,7 @@ export default function CreateAccount() {
     });
   };
 
-  // Handle form submission
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

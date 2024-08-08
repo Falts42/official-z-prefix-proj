@@ -7,7 +7,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 
 export default function CreateItem() {
-  // Define state for form fields
+
   const [data, setData] = useState({
     user_id: '',
     item_name: '',
@@ -17,7 +17,7 @@ export default function CreateItem() {
 
   let navigate = useNavigate();
 
-  // Handle changes in input fields
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({
@@ -26,7 +26,6 @@ export default function CreateItem() {
     });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
