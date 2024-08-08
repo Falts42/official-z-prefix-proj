@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
-// eslint-disable-next-line react/prop-types
+
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(localStorage.getItem("name") || null);
   const [token, setToken] = useState(localStorage.getItem("token") || "");

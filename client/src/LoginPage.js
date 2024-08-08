@@ -1,7 +1,6 @@
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Text, Link } from "@chakra-ui/react";
 import {
-  Image,
   Button,
   Box,
   Input,
@@ -11,9 +10,10 @@ import {
   Stack,
   useToast,
   IconButton,
+  VStack
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useAuth } from "./AuthUser";
 
 export default function LoginPage() {
@@ -76,9 +76,7 @@ export default function LoginPage() {
     <>
       <Box boxShadow="lg" paddingY="2em">
         <Box display="flex" justifyContent="center">
-          <Image boxSize="50%" src="/magicBanner.jpg" />
         </Box>
-
         <Container paddingTop="2em" maxW={["50%", "30%", "20%"]}>
           <Stack gap={2}>
             <Input
@@ -116,17 +114,28 @@ export default function LoginPage() {
             >
               Login
             </Button>
-            <Box>
-              <Text>
-                Would you like to{' '}
-                <Link color='teal.500' href='/guestView'>
-                  go to the visitors page
-                </Link>
-                ?
-              </Text>
-            </Box>
           </Container>
         </Container>
+        <VStack>
+        <Box>
+            <Text>
+              <Link color='teal.500' href='/createAccount'>
+                Create New Account{' '}
+              </Link>
+              ?
+            </Text>
+          </Box>
+          <Box>
+            <Text>
+              Would you like to{' '}
+              <Link color='teal.500' href='/guestView'>
+                go to the visitors page
+              </Link>
+              ?
+            </Text>
+          </Box>
+
+        </VStack>
       </Box>
     </>
   );

@@ -47,6 +47,31 @@ app.get("/inventory/:item_name", async (req, res) => {
   }
 });
 
+//===========================GET Item by ID==========================================
+app.get("/inventory/:id", async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    return res
+      .status(400)
+      .json({ error: "empty item name field" });
+  }
+
+  try {
+    const item = await knex("items")
+      .select("*")
+      .where({ id: id })
+      .first();
+
+    if (!item) return res.status(404).json({ error: "item not found" });
+
+    return res.json(item);
+  } catch (error) {
+    console.error("error fetching inventory", error);
+    return res.status(500).json({ error: "failed to fetch inventory" + error });
+  }
+});
+
+
 //=======================POST NEW Item=============================================
 app.post("/inventory", async (req, res) => {
   const { user_id, item_name, description, quantity } = req.body;
@@ -114,7 +139,7 @@ app.delete("/inventory/:item_name", async (req, res) => {
   }
 });
 
-//=======================GET USER=============================================
+//=======================GET Specific USER=============================================
 app.get("/userData/:username", async (req, res) => {
   const { username } = req.params;
   if (!username) {
@@ -137,6 +162,30 @@ app.get("/userData/:username", async (req, res) => {
     return res.status(500).json({ error: "failed to fetch userData" + error });
   }
 });
+
+
+//=======================GET All USER=============================================
+app.get('/userData', (req, res) => {
+  knex('users').select('*')
+    .then(data => res.status(200).json(data))
+});
+
+//=======================POST New USER=============================================
+app.post("/userData", async (req, res) => {
+  const { first_name, last_name, username, password } = req.body;
+
+  if (!first_name || !last_name || !username || !password) {
+    return res.status(400).json({ error: "empty user field. Please ensure you have your first name, last name, username, and password listed" });
+  }
+  try {
+    const user = await knex("users").insert({ first_name: first_name, last_name: last_name, username: username, password: password });
+    return res.status(202).json({ message: "user successfully added" });
+  } catch (error) {
+    console.error("error adding item", error);
+    return res.status(500).json({ error: "failed to add new user" });
+  }
+});
+
 
 //==================get Manager Inventory==================================
 app.get("/UserInventory/:userId", async (req, res) => {

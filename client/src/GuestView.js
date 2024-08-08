@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { Box, Heading, Text, Link } from "@chakra-ui/react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Heading, Link } from "@chakra-ui/react";
+import { Button } from '@chakra-ui/react'
+import { useNavigate } from "react-router-dom";
 import './GuestView.css';
 
 function GuestView() {
   const [data, setData] = useState([]);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,16 +24,20 @@ function GuestView() {
   }, []);
 
   return (
-    <div className="item-grid">
-      <header className="header">
+    <div>
+      <Button onClick={() => navigate('/')} justifyContent="right">Back to Home Page</Button>
+      <Heading className="header">
         Welcome to Kruger! The BETTER supermarket!
-      </header>
+      </Heading>
       <div>
-        {data.map((e) => (
-          <div key={e.id} className="item">
-            {e.item_name}
-          </div>
-
+        {data.map((item) => (
+          <ul >
+            <li key={item.id} className="item">
+              <Link href={`/guestView/${item.item_name}`} color="teal.500">
+                {item.item_name}
+              </Link>
+            </li>
+          </ul>
         ))}
       </div>
     </div>

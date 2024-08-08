@@ -5,76 +5,83 @@ import NotFound from "./NotFound";
 import GuestView from './GuestView';
 import LoginPage from './LoginPage';
 import ManagerView from './ManagerView';
-import { useEffect, useState } from 'react';
+import GuestItemDetailsView from './GuestItemDetailsView';
+import ManagerItemDetailsView from './ManagerItemDetailsView';
+import CreateAccount from './CreateAccount';
+import CreateItem from './CreateItem';
 
 
 function App() {
 
   return (
     <>
-    <AuthProvider>
-      <Routes>
-        <Route path="*" element={<NotFound />}/>
-        <Route path="/" element={<LoginPage />}/>
-        <Route path="/guestView" element={<GuestView />}/>
-        <Route path="/managerView" element={<ManagerView />}/>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/createAccount" element={<CreateAccount/>} />
+          <Route path="/createItem" element={<CreateItem/>} />
+          <Route path="/guestView" element={<GuestView />} />
+          <Route path='/guestView/:item_name' element={<GuestItemDetailsView />} />
+          <Route path="/managerView" element={<ManagerView />} />
+          <Route path='/managerView/:item_name' element={<ManagerItemDetailsView />} />
+        </Routes>
       </AuthProvider>
-      </>
-      );
+    </>
+  );
 }
 
 export default App;
 
 
 
-      // function GetCode() {
-      //   const [data, setData] = useState([]);
+// function GetCode() {
+//   const [data, setData] = useState([]);
 
-      //   useEffect(() => {
+//   useEffect(() => {
 
-      //     const fetchData = async () => {
-      //       let result
-      //       try {
-      //         // const res = await fetch("http://172.17.0.2/")
-      //         const res = await fetch("http://localhost:8080/inventory")
-      //         result = await res.json()
-      //         //setStudents(res)
-      //       } catch (error) {
-      //         console.log(error)
+//     const fetchData = async () => {
+//       let result
+//       try {
+//         // const res = await fetch("http://172.17.0.2/")
+//         const res = await fetch("http://localhost:8080/inventory")
+//         result = await res.json()
+//         //setStudents(res)
+//       } catch (error) {
+//         console.log(error)
 
-      //       }
+//       }
 
-      //       return result
-      //     }
+//       return result
+//     }
 
-      //     fetchData().then((result) => {
-      //       setData(result);
+//     fetchData().then((result) => {
+//       setData(result);
 
-      //     })
+//     })
 
-      //   }, [])
+//   }, [])
 
-      //   let renderElement
+//   let renderElement
 
-      //   renderElement = data.map((e) => {
-      //     let key = e.id
-      //     let name = e.item_name
-      //     return <>{name}, {key}<br /> </>
-      //   })
-      //   return <>{renderElement}</>
-      // }
+//   renderElement = data.map((e) => {
+//     let key = e.id
+//     let name = e.item_name
+//     return <>{name}, {key}<br /> </>
+//   })
+//   return <>{renderElement}</>
+// }
 
-      // <div className="App">
-      //   <header className="App-header">
-      //     Welcome to Kruger!
-      //   </header>
-      // </div>
-      // <AuthProvider>
-      // <Routes>
-      //   <Route path="*" element={<NotFound />}/>
-      //   <Route path="/" element={<LoginPage />}/>
-      //   <Route path="/" element={<GuestView />} />
-      //   <Route path="/inventory/" element={<GuestView />}/>
-      // </Routes>
-      // </AuthProvider>
+// <div className="App">
+//   <header className="App-header">
+//     Welcome to Kruger!
+//   </header>
+// </div>
+// <AuthProvider>
+// <Routes>
+//   <Route path="*" element={<NotFound />}/>
+//   <Route path="/" element={<LoginPage />}/>
+//   <Route path="/" element={<GuestView />} />
+//   <Route path="/inventory/" element={<GuestView />}/>
+// </Routes>
+// </AuthProvider>
