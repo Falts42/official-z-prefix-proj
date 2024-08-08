@@ -18,15 +18,12 @@ app.get("/", (req, res) => {
 });
 
 //===========================GET ALL Items in Inventory==========================================
-
 app.get('/inventory', (req, res) => {
   knex('items').select('*')
     .then(data => res.status(200).json(data))
 });
 
 //===========================GET Item by Name==========================================
-
-
 app.get("/inventory/:item_name", async (req, res) => {
   const { item_name } = req.params;
   if (!item_name) {
@@ -86,6 +83,36 @@ app.patch("/inventory/:item_name", async (req, res) => {
     return res.status(500).json({ error: "failed to update item" });
   }
 });
+//=======================PUT Item=============================================
+app.put('/inventory/:item_name', (req, res) => {
+  knex('items').where('items', req.params.id).update(req.body)
+    .then(count => {
+      if (count) {
+        res.status(200).json({ message: 'Game updated' });
+      } else {
+        res.status(404).json({ message: 'Game not found' });
+      }
+    })
+    .catch(err => res.status(500).json({ message: err.message }));
+});
+
+//=======================DELETE Item=============================================
+app.delete("/inventory/:item_name", async (req, res) => {
+  const { item_name } = req.params;
+
+  try {
+    const deleteItem = await knex("items").where({ item_name: item_name }).del();
+
+    if (deleteItem === 0) {
+      return res.status(404).json({ error: "Item not found" });
+    } else {
+      return res.status(202).json("Item successfully removed");
+    }
+  } catch (error) {
+    console.error("error removing item", error);
+    return res.status(500).json({ error: "failed to remove item" });
+  }
+});
 
 //=======================GET USER=============================================
 app.get("/userData/:username", async (req, res) => {
@@ -112,7 +139,7 @@ app.get("/userData/:username", async (req, res) => {
 });
 
 //==================get Manager Inventory==================================
-app.get("/inventory/:userId", async (req, res) => {
+app.get("/UserInventory/:userId", async (req, res) => {
   const { userId } = req.params;
   console.log("userId: ", userId);
 
