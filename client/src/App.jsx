@@ -3,7 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import AuthProvider from "./AuthUser";
 import NotFound from "./NotFound";
 import GuestView from './GuestView';
-import LoginPage from './LoginPage'
+import LoginPage from './LoginPage';
+import ManagerView from './ManagerView';
 import { useEffect, useState } from 'react';
 
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="*" element={<NotFound />}/>
         <Route path="/" element={<LoginPage />}/>
         <Route path="/guestView" element={<GuestView />}/>
+        <Route path="/managerView" element={<ManagerView />}/>
       </Routes>
       </AuthProvider>
       </>

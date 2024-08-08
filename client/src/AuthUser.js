@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
         setToken(res.id);
         localStorage.setItem("name", res.name);
         localStorage.setItem("token", res.id);
-        navigate("/");
+        navigate("/managerView");
         return;
       }
       throw new Error(res.message);

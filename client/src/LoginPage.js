@@ -69,8 +69,8 @@ export default function LoginPage() {
 
   const user = useAuth();
 
-  // if (user.token) return <Navigate to="/search" state={userData} />;
-  //if (user.token) return <Navigate to="/guestView" />;
+  // if (user.token) return <Navigate to="/managerView" state={userData} />;
+  // if (user.token) return <Navigate to="/managerView" />;
 
   return (
     <>
@@ -116,13 +116,15 @@ export default function LoginPage() {
             >
               Login
             </Button>
-            <Text>
-        Would you like to{' '}
-        <Link color='teal.500' href='/guestView'>
-          go to the visitors page
-        </Link>
-        ?
-      </Text>
+            <Box>
+              <Text>
+                Would you like to{' '}
+                <Link color='teal.500' href='/guestView'>
+                  go to the visitors page
+                </Link>
+                ?
+              </Text>
+            </Box>
           </Container>
         </Container>
       </Box>
