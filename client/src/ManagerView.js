@@ -8,6 +8,7 @@ function ManagerView() {
 
   let navigate = useNavigate();
 
+  // Fetches all of the data from the inventory API
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,12 +23,12 @@ function ManagerView() {
     fetchData();
   }, []);
 
+  // Deletes an item depending on which item is clicked
   const handleDelete = async (item_name) => {
     try {
       await fetch(`http://localhost:8080/inventory/${item_name}`, {
         method: 'DELETE',
       });
-      // Remove the item from the UI
       setData(data.filter(item => item.item_name !== item_name));
     } catch (error) {
       console.log(error);
@@ -36,13 +37,15 @@ function ManagerView() {
 
   return (
     <div>
-       <Button onClick={() => navigate('/')} justifyContent="right">Logout</Button>
+      {/* Acts as a "logout" button */}
+      <Button onClick={() => navigate('/')} justifyContent="right">Logout</Button>
       <Heading className="header">
         Welcome Manager!
       </Heading>
       <div>
+        {/* Takes the manager to the CreateItem page */}
         <Container display="flex" justifyContent="center">
-        <Button onClick={() => navigate('/createItem')}>Create New Item</Button>
+          <Button onClick={() => navigate('/createItem')}>Create New Item</Button>
         </Container>
         {data.map((item) => (
           <ul >
@@ -50,6 +53,7 @@ function ManagerView() {
               <Link href={`/managerView/${item.item_name}`} color="teal.500">
                 {item.item_name}
               </Link>
+              {/* Deletes the item from the ui and the API when clicked */}
               <Button
                 colorScheme="red"
                 onClick={() => handleDelete(item.item_name)}

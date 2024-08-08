@@ -49,6 +49,7 @@ export default function CreateItem() {
     }
   };
 
+  // Simple form that takes in the user's user ID, item name, description, and quantity"
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -95,6 +96,7 @@ export default function CreateItem() {
           required
         />
       </div>
+      {/* Contains a button that submits the data to the api as well as takes the user back to the manager dashboard */}
       <Container>
       <Button type="submit">Submit</Button>
       <Button  onClick={() => navigate('/managerView')} type="submit">Go Back to your Inventory</Button>

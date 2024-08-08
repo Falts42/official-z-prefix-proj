@@ -8,6 +8,7 @@ export default function ManagerItemDetailsView() {
 
   let navigate = useNavigate();
 
+  //Fetches data from the inventory api using the item name input
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -23,6 +24,7 @@ export default function ManagerItemDetailsView() {
     }, [item_name]);
 
   return (
+    // Displays the item's details
       <Container>
       {item ? (
         <Box>
@@ -30,6 +32,7 @@ export default function ManagerItemDetailsView() {
           <Text>ID: {item.id}</Text>
           <Text>Description: {item.description}</Text>
           <Text>Quantity: {item.quantity}</Text>
+          {/* Adds a button to navigate back to the dashboard */}
           <Button  onClick={() => navigate('/managerView')} type="submit">Go Back to your Inventory</Button>
         </Box>
       ) : (

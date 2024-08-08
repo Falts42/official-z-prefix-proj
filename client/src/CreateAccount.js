@@ -11,7 +11,7 @@ export default function CreateAccount() {
     password: ''
   });
 
-  let navigate =useNavigate();
+  let navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +21,7 @@ export default function CreateAccount() {
     });
   };
 
-
+  // Performs a POST to the API with the newly created item submitted by the manager
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,6 +45,7 @@ export default function CreateAccount() {
     }
   };
 
+  // Simple form that takes in the user's first name, last name, username, and password"
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -91,9 +92,10 @@ export default function CreateAccount() {
           required
         />
       </div>
+      {/* Contains a button that submits the data to the api as well as takes the user back to the login page */}
       <Container>
-      <Button type="submit">Submit</Button>
-      <Button  onClick={() => navigate('/')} type="submit">Go Home</Button>
+        <Button type="submit">Submit</Button>
+        <Button onClick={() => navigate('/')} type="submit">Go Home</Button>
       </Container>
     </form>
   );

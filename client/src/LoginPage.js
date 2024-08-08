@@ -53,6 +53,7 @@ export default function LoginPage() {
       login.username === "" ||
       login.password === ""
     ) {
+      // Creates a pop up if none of the fields are properly filled out
       toast({
         title: "Incomplete Login Fields",
         description: "You must fill in all login fields to continue",
@@ -77,6 +78,7 @@ export default function LoginPage() {
       <Box boxShadow="lg" paddingY="2em">
         <Box display="flex" justifyContent="center">
         </Box>
+        {/* A container that takes in the user's input */}
         <Container paddingTop="2em" maxW={["50%", "30%", "20%"]}>
           <Stack gap={2}>
             <Input
@@ -118,6 +120,7 @@ export default function LoginPage() {
         </Container>
         <VStack>
         <Box>
+          {/* Creates a hyperlink that navigates to the CreateAccount Page */}
             <Text>
               <Link color='teal.500' href='/createAccount'>
                 Create New Account{' '}
@@ -126,6 +129,7 @@ export default function LoginPage() {
             </Text>
           </Box>
           <Box>
+            {/* Creates a hyperlink that navigates to the GuestView Page */}
             <Text>
               Would you like to{' '}
               <Link color='teal.500' href='/guestView'>
