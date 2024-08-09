@@ -3,6 +3,7 @@ import {
   Button,
   Input,
   Container,
+  Heading
 } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom'
 
@@ -52,6 +53,9 @@ export default function CreateItem() {
   // Simple form that takes in the user's user ID, item name, description, and quantity"
   return (
     <form onSubmit={handleSubmit}>
+      <Heading className="header">
+       Fill out the Fields to create your Item!
+      </Heading>
       <div>
         <label htmlFor="user_id">User ID:</label>
         <Input

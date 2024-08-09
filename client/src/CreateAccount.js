@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input, Container } from "@chakra-ui/react";
+import { Button, Input, Container, Heading } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateAccount() {
@@ -48,6 +48,9 @@ export default function CreateAccount() {
   // Simple form that takes in the user's first name, last name, username, and password"
   return (
     <form onSubmit={handleSubmit}>
+      <Heading className="header">
+        Fill out the fields below to create your Account!
+      </Heading>
       <div>
         <label htmlFor="first_name">First Name:</label>
         <Input
