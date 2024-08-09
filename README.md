@@ -24,7 +24,9 @@ USING THE APP:
 
 4. MANAGERS PAGE: After logging in, the manager is greeted with an inventory dashboard that lists out all of the items with the names of said items hyperlinked and a delete button next to the names. The manager will also see a 'create new item' button at the top of the screen. Once the manager clicks that page, he is taken to a completely different page where he can put in his/her user id, the name of the item, a brief description of the item, and the quantity of said item. After hitting the submit button, the manager should then hit the 'Go back to your inventory' button to see the newly added item.
 
-5. VISITORS PAGE: Upon clicking the visitors page link, visitors are taken to a page where they can view all of the items in the entire inventory. The visitor has the ability to click on every item's name which will take the visitor to a completely new page the displays all of the item's details.
+5. CREATE ITEM: The manager will also see a 'create new item' button at the top of the screen. Once the manager clicks that page, he is taken to a completely different page where he can put in his/her user id, the name of the item, a brief description of the item, and the quantity of said item. After hitting the submit button, it will appear that nothing has happened as well, but if the manager hits the 'Go back to your inventory' button, they will see the newly added item.
+
+6. VISITORS PAGE: Upon clicking the visitors page link, visitors are taken to a page where they can view all of the items in the entire inventory. The visitor has the ability to click on every item's name which will take the visitor to a completely new page the displays all of the item's details.
 
 USING THE API:
 1. To view the raw api data, go to the following link: http://localhost:8080/inventory . Here you should be able to see all of the seeded data that was fed into the database.
