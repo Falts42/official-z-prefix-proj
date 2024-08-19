@@ -2,7 +2,7 @@
 
 Preface: You may notice that my front-end files are not organized. There was an issue with the docker compose not being able to initially recognize the file paths outside of src, so I threw all of them into src as that was the easiest solution to continue making progress. Had I had more time, I would've tried to fix this. Sorry for the inconvenience.
 
-Hello there! Welcome to Zach Falter's Z-Prefix Project!
+Hello there! Welcome to my Z-Prefix Project!
 
 If you are using this app for the first time, I have included steps on how to get you up and running in no time.
 
